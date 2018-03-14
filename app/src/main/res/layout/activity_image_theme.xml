@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.edt.framework_common.view.CommonTitleView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:DisplayHomeAsUpEnabled="true"
+        app:titleText="图片主题"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我是图片"/>
+    </RelativeLayout>
+
+</LinearLayout>

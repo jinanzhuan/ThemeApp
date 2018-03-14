@@ -3,11 +3,27 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <!--colorPrimary 应用的主要色调-->
+        <item name="colorPrimary">@color/color_toolbar_bg</item>
+        <!--colorPrimaryDark 应用的主要暗色调，statusBarColor默认使用该颜色-->
+        <item name="colorPrimaryDark">@color/color_toolbar_bg</item>
+        <!-- 是否覆盖锚点，默认为true，即盖住Toolbar -->
+        <item name="overlapAnchor">false</item>
+        <!--colorButtonNormal 默认按钮的背景颜色-->
+        <item name="colorButtonNormal">@color/btn_white_normal</item>
+        <!--colorControlNormal CheckBox，RadioButton，SwitchCompat等默认状态的颜色-->
+        <item name="colorControlNormal">@color/btn_white_normal</item>
+        <item name="android:textColorHint">@color/base_hint_color</item>
+
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowTranslucentNavigation">true</item>
+        <!--statusBarColor 状态栏颜色，默认使用colorPrimaryDark-->
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="overlapAnchor">false</item>
-        <item name="textAllCaps">false</item>
     </style>
 
 </resources>

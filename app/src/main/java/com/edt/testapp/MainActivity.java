@@ -25,6 +25,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     Button mBtnOrange;
     @InjectView(R.id.btn_prink)
     Button mBtnPrink;
+    @InjectView(R.id.btn_skip_image)
+    Button mBtnSkipImage;
 
     @Override
     public void onBaseCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mBtnBlue.setOnClickListener(this);
         mBtnOrange.setOnClickListener(this);
         mBtnPrink.setOnClickListener(this);
+        mBtnSkipImage.setOnClickListener(this);
     }
 
     @Override
@@ -48,22 +51,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_red :
+            case R.id.btn_red:
                 mBase.setBackgroundColor(Color.parseColor("#FF0000"));
                 mRlTop.setBackgroundColor(Color.parseColor("#FF0000"));
                 break;
-            case R.id.btn_blue :
+            case R.id.btn_blue:
                 mBase.setBackgroundColor(Color.parseColor("#0000FF"));
                 mRlTop.setBackgroundColor(Color.parseColor("#0000FF"));
                 break;
-            case R.id.btn_orange :
+            case R.id.btn_orange:
                 mBase.setBackgroundColor(Color.parseColor("#FFA500"));
                 mRlTop.setBackgroundColor(Color.parseColor("#FFA500"));
                 break;
-            case R.id.btn_prink :
+            case R.id.btn_prink:
                 mBase.setBackgroundColor(Color.parseColor("#A52A2A"));
                 mRlTop.setBackgroundColor(Color.parseColor("#A52A2A"));
                 break;
+            case R.id.btn_skip_image:
+                ImageThemeActivity.actionStart(this);
+                break;
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
     }
 }
