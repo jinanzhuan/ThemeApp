@@ -11,8 +11,10 @@ import android.graphics.Path;
 import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -45,7 +47,7 @@ public class DrawView extends RelativeLayout {
     private float mCurrentY;
     private ArrayList<PointModel> points;
     private final Path mPath = new Path();
-    private final Matrix matrix = new Matrix();
+    private Matrix matrix;
     // 放大镜的半径
     private int RADIUS;
     private int dot_radius;//点的半径
@@ -58,6 +60,8 @@ public class DrawView extends RelativeLayout {
     private double mUnitMv;
     private boolean isCanMeasure = true;
     private float mPreY;
+    private long preTime;
+    private long curTime;
 
     public DrawView(Context context) {
         this(context, null);
@@ -84,12 +88,11 @@ public class DrawView extends RelativeLayout {
 
         mOutPaint = new Paint();
         mOutPaint.setStrokeWidth(5);
-        mOutPaint.setColor(Color.parseColor("#aac2da"));
+        mOutPaint.setColor(Color.parseColor("#99aac2da"));
 
         points = new ArrayList<>();
 
         mPath.addCircle(RADIUS, RADIUS, RADIUS, Path.Direction.CW);
-        matrix.setScale(FACTOR, FACTOR);
 
         DisplayMetrics dm = getResources().getDisplayMetrics();
 
@@ -104,8 +107,11 @@ public class DrawView extends RelativeLayout {
 
         dot_radius = CommonUtils.dip2px(mContext, 1);
         out_radius = CommonUtils.dip2px(mContext, 5);
+        matrix = new Matrix();
+        matrix.setScale(FACTOR, FACTOR);
 
         setDrawingCacheEnabled(true);
+        setWillNotDraw(false);
     }
 
     @Override
@@ -115,6 +121,8 @@ public class DrawView extends RelativeLayout {
                 case MotionEvent.ACTION_DOWN:
                     mCurrentX = event.getX();
                     mCurrentY = event.getY();
+                    preTime = SystemClock.currentThreadTimeMillis();
+                    Log.e("TAG", "preTime="+preTime);
                     showManifier = false;
                     mBmp = getDrawingCache(true);
                     break;
@@ -122,7 +130,12 @@ public class DrawView extends RelativeLayout {
                 case MotionEvent.ACTION_MOVE:
                     mCurrentX = event.getX();
                     mCurrentY = event.getY();
-                    showManifier = true;
+                    curTime = SystemClock.currentThreadTimeMillis();
+                    Log.e("TAG", "curTime="+curTime);
+                    Log.e("TAG", "时间差="+(curTime-preTime));
+                    if(curTime - preTime > 30) {
+                        showManifier = true;
+                    }
                     break;
 
                 case MotionEvent.ACTION_UP:
@@ -186,7 +199,6 @@ public class DrawView extends RelativeLayout {
 
 
             if (showManifier) {
-
                 BitmapShader shader = new BitmapShader(Bitmap.createScaledBitmap(mBmp,
                         mBmp.getWidth() * FACTOR, mBmp.getHeight() * FACTOR, true),
                         Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
@@ -208,8 +220,8 @@ public class DrawView extends RelativeLayout {
 
                 drawable.draw(canvas);
 
-                canvas.drawCircle(mCurrentX, mCurrentY - CommonUtils.dip2px(mContext, 60) - (RADIUS / 2), out_radius, mOutPaint);
-                canvas.drawCircle(mCurrentX, mCurrentY - CommonUtils.dip2px(mContext, 60) - (RADIUS / 2), dot_radius, mPaint);
+                canvas.drawCircle(mCurrentX, mCurrentY - CommonUtils.dip2px(mContext, 60) - (RADIUS / 2), out_radius*2, mOutPaint);
+                canvas.drawCircle(mCurrentX, mCurrentY - CommonUtils.dip2px(mContext, 60) - (RADIUS / 2), dot_radius*2, mPaint);
 
             }
         }

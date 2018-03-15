@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">测试App</string>
+    <string name="content">云计算巨头想让大众免费帮它完善 AWS 文档。官方博客宣布它将 AWS 开发者指南和用户指南都上传到了 GitHub，邀请感兴趣的人通过 pull requests 的形式来贡献变化和改善文档。亚马逊称，用户可以改进代码示例或递交新的示例，增加细节，重写段落和语句。AWS 服务器的软件本身并没有开源。它的竞争对手微软 Azure 也在 GitHub 上公开了文档。
+游戏破解者想要帮助游戏开发商提高销量英雄萨姆系列游戏开发商 Croteam 与 Hammerwatch 游戏开发商 Crackshell 合作发布了一款类似 Hammerwatch 但以英雄萨姆为主题的多人合作游戏</string>
 </resources>
