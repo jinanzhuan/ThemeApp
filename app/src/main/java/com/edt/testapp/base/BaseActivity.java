@@ -23,19 +23,20 @@ import android.widget.Toast;
 public abstract class BaseActivity extends AppCompatActivity implements IActivity{
 
     private boolean isSetStatusBar;
+    public BaseActivity mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         onBaseCreate(savedInstanceState);
-        setSystemFit();
         initIntent();
         initView();
         initListener();
         initData();
     }
 
-    private void setSystemFit() {
+    public void setSystemFit() {
         ViewGroup contentFrameLayout = (ViewGroup) findViewById(Window.ID_ANDROID_CONTENT);
         View parentView = contentFrameLayout.getChildAt(0);
         if (parentView != null && Build.VERSION.SDK_INT >= 14) {

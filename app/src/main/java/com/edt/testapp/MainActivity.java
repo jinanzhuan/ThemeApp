@@ -1,6 +1,5 @@
 package com.edt.testapp;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,16 +16,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RelativeLayout mRlTop;
     @InjectView(R.id.base)
     RelativeLayout mBase;
-    @InjectView(R.id.btn_red)
-    Button mBtnRed;
-    @InjectView(R.id.btn_blue)
-    Button mBtnBlue;
-    @InjectView(R.id.btn_orange)
-    Button mBtnOrange;
-    @InjectView(R.id.btn_prink)
-    Button mBtnPrink;
     @InjectView(R.id.btn_skip_image)
     Button mBtnSkipImage;
+    @InjectView(R.id.btn_fragment)
+    Button mBtnFragment;
+    @InjectView(R.id.btn_theme_test)
+    Button mBtnThemeTest;
+    @InjectView(R.id.btn_status_bar)
+    Button mBtnStatusBar;
+    @InjectView(R.id.btn_user_define)
+    Button mBtnUserDefine;
 
     @Override
     public void onBaseCreate(Bundle savedInstanceState) {
@@ -36,11 +35,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initListener() {
-        mBtnRed.setOnClickListener(this);
-        mBtnBlue.setOnClickListener(this);
-        mBtnOrange.setOnClickListener(this);
-        mBtnPrink.setOnClickListener(this);
         mBtnSkipImage.setOnClickListener(this);
+        mBtnThemeTest.setOnClickListener(this);
+        mBtnFragment.setOnClickListener(this);
+        mBtnStatusBar.setOnClickListener(this);
+        mBtnUserDefine.setOnClickListener(this);
     }
 
     @Override
@@ -51,24 +50,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_red:
-                mBase.setBackgroundColor(Color.parseColor("#FF0000"));
-                mRlTop.setBackgroundColor(Color.parseColor("#FF0000"));
-                break;
-            case R.id.btn_blue:
-                mBase.setBackgroundColor(Color.parseColor("#0000FF"));
-                mRlTop.setBackgroundColor(Color.parseColor("#0000FF"));
-                break;
-            case R.id.btn_orange:
-                mBase.setBackgroundColor(Color.parseColor("#FFA500"));
-                mRlTop.setBackgroundColor(Color.parseColor("#FFA500"));
-                break;
-            case R.id.btn_prink:
-                mBase.setBackgroundColor(Color.parseColor("#A52A2A"));
-                mRlTop.setBackgroundColor(Color.parseColor("#A52A2A"));
-                break;
             case R.id.btn_skip_image:
                 ImageThemeActivity.actionStart(this);
+                break;
+            case R.id.btn_theme_test:
+                ThemeTestActivity.actionStart(this);
+                break;
+            case R.id.btn_fragment:
+                FragmentActivity.actionStart(this);
+                break;
+            case R.id.btn_status_bar:
+                StatusBarActivity.actionStart(mContext);
+                break;
+            case R.id.btn_user_define:
+                UserDefinedActivity.actionStart(mContext);
                 break;
         }
     }

@@ -12,7 +12,7 @@
         android:name=".base.MyApplication"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity" android:theme="@style/MainTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,6 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ImageThemeActivity"/>
+        <activity android:name=".FragmentActivity"/>
+        <activity android:name=".ThemeTestActivity" android:theme="@style/MainTheme"/>
+        <activity android:name=".StatusBarActivity"/>
+        <activity android:name=".UserDefinedActivity"/>
     </application>
 
 </manifest>

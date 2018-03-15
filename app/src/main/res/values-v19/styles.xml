@@ -1,8 +1,9 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="overlapAnchor">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--statusBarColor 状态栏颜色，默认使用colorPrimaryDark-->
     </style>
 
 </resources>
