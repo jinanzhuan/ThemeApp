@@ -112,6 +112,7 @@ public class DrawView extends RelativeLayout {
 
         setDrawingCacheEnabled(true);
         setWillNotDraw(false);
+
     }
 
     @Override
@@ -156,6 +157,7 @@ public class DrawView extends RelativeLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Log.e("TAG", "onDraw");
         if(isCanMeasure) {
             if (points.size() == 0) {
                 canvas.drawCircle(mCurrentX, mCurrentY, out_radius, mOutPaint);
@@ -226,6 +228,12 @@ public class DrawView extends RelativeLayout {
             }
         }
 
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        Log.e("TAG", "onLayout");
     }
 
     public float getMin(double x, double y) {

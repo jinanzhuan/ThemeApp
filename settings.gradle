@@ -1,6 +1,6 @@
-include ':app', ':AndroidSystemUiTraining'
+include ':app', ':AndroidSystemUiTraining', ':statusbar'
 include ':dtaf'//引入项目
-project(':dtaf').projectDir=new File('../dtaf')  //最关键的代码
+project(':dtaf').projectDir = new File('../dtaf')  //最关键的代码
 include ':dtaf:framework_common'  //公司的公共库
 include ':dtaf:framework_model'  //公司的公共库
 include ':dtaf:easeUI'  //第三方

@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CodeTheme" parent="@style/AppTheme">
+
+    </style>
+
+    <!--Android 4.4 以下版本，不实现沉浸样式，跟随系统样式-->
+    <style name="XmlTheme" parent="@style/AppTheme">
+
+    </style>
+
+</resources>
