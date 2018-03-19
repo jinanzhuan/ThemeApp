@@ -7,6 +7,8 @@ import android.widget.RelativeLayout;
 
 import com.edt.testapp.base.BaseActivity;
 
+import java.io.File;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -26,6 +28,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     Button mBtnStatusBar;
     @InjectView(R.id.btn_user_define)
     Button mBtnUserDefine;
+    @InjectView(R.id.btn_mupdf)
+    Button mBtnMupdf;
 
     @Override
     public void onBaseCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mBtnFragment.setOnClickListener(this);
         mBtnStatusBar.setOnClickListener(this);
         mBtnUserDefine.setOnClickListener(this);
+        mBtnMupdf.setOnClickListener(this);
     }
 
     @Override
@@ -65,7 +70,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_user_define:
                 UserDefinedActivity.actionStart(mContext);
                 break;
+
+            case R.id.btn_mupdf:
+                startToMuPdf();
+                break;
         }
+    }
+
+    private void startToMuPdf() {
+        File file = new File(".\\ecg.pdf");
     }
 
     @Override

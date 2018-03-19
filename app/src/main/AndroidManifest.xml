@@ -24,6 +24,7 @@
         <activity android:name=".ThemeTestActivity" android:theme="@style/MainTheme"/>
         <activity android:name=".StatusBarActivity"/>
         <activity android:name=".UserDefinedActivity"/>
+        <activity android:name=".MupdfActivity"/>
     </application>
 
 </manifest>
