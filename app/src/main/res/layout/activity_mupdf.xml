@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:textColor="#626161"
-              android:weightSum="1">
+              android:weightSum="1"
+
+    >
+
 
     <RelativeLayout
         android:id="@+id/rl_ecg_detail_top"
@@ -17,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/color_toolbar_bg"
-            ></android.support.v7.widget.Toolbar>
+            />
 
         <TextView
             android:id="@+id/tv_ecg_detail_title"
@@ -76,21 +80,14 @@
                     android:layout_margin="8dp"
                     android:layout_weight="1">
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
-
-                        <com.artifex.mupdf.viewer.ReaderView
-                            android:id="@+id/iv_ecg_detail_ecg"
-                            android:layout_width="match_parent"
-                            android:layout_height="505dp"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-
-                            />
-                    </RelativeLayout>
+                    <ViewStub
+                        android:id="@+id/viewStub"
+                        android:inflatedId="@+id/pviewStub"
+                        android:layout="@layout/layout_pdf"
+                        android:layout_width="match_parent"
+                        android:layout_height="505dp"
+                        android:padding="8dp"/>
 
 
                 </android.support.v7.widget.CardView>

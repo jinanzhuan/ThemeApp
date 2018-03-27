@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".CodeThemeActivity" android:theme="@style/CodeTheme"/>
+        <activity android:name=".CodeThemeActivity"/>
         <activity android:name=".XmlThemeActivity" android:theme="@style/XmlTheme"/>
     </application>
 

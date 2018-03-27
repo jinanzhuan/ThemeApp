@@ -8,9 +8,12 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.method.PasswordTransformationMethod;
+import android.view.ViewStub;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +22,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.artifex.mupdf.viewer.MuPDFCore;
+import com.artifex.mupdf.viewer.OutlineActivity;
 import com.artifex.mupdf.viewer.PageAdapter;
 import com.artifex.mupdf.viewer.ReaderView;
 import com.artifex.mupdf.viewer.SearchTaskResult;
@@ -27,6 +31,7 @@ import com.edt.testapp.base.BaseActivity;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import butterknife.ButterKnife;
@@ -42,7 +47,6 @@ import butterknife.InjectView;
  *     modify :
  * </pre>
  */
-
 public class MupdfActivity extends BaseActivity {
 
     @InjectView(R.id.toolbar_ecg_detail)
@@ -55,8 +59,6 @@ public class MupdfActivity extends BaseActivity {
     RelativeLayout mRlEcgDetailTop;
     @InjectView(R.id.tv_ecg_detail)
     TextView mTvEcgDetail;
-    @InjectView(R.id.iv_ecg_detail_ecg)
-    ReaderView mDocView;
     @InjectView(R.id.phoneviewcard)
     CardView mPhoneviewcard;
     @InjectView(R.id.tv_ecgdetail_tag_report)
@@ -71,16 +73,47 @@ public class MupdfActivity extends BaseActivity {
     CardView mLlEcgDetailShrink;
     @InjectView(R.id.scroll_ecg)
     ScrollView mScrollEcg;
-
-    private MuPDFCore core;
-    private String mFileName;
-    private EditText mPasswordView;
-    private AlertDialog.Builder mAlertBuilder;
+    @InjectView(R.id.viewStub)
+    ViewStub mViewStub;
+    ReaderView mDocView;
 
     @Override
     public void onBaseCreate(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void initListener() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    enum TopBarMode {Main, Search, More}
+
+    ;
+
+    private final int OUTLINE_REQUEST = 0;
+    private MuPDFCore core;
+    private String mFileName;
+    private EditText mPasswordView;
+    private TopBarMode mTopBarMode = TopBarMode.Main;
+    private AlertDialog.Builder mAlertBuilder;
+    private boolean mLinkHighlight = false;
+    private final Handler mHandler = new Handler();
+    private boolean mAlertsActive = false;
+    private AlertDialog mAlertDialog;
+    private ArrayList<OutlineActivity.Item> mFlatOutline;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mupdf);
         ButterKnife.inject(this);
+
         mAlertBuilder = new AlertDialog.Builder(this);
 
         if (core == null) {
@@ -158,6 +191,7 @@ public class MupdfActivity extends BaseActivity {
         createUI(savedInstanceState);
     }
 
+
     public void requestPassword(final Bundle savedInstanceState) {
         mPasswordView = new EditText(this);
         mPasswordView.setInputType(EditorInfo.TYPE_TEXT_VARIATION_PASSWORD);
@@ -193,7 +227,10 @@ public class MupdfActivity extends BaseActivity {
         // Now create the UI.
         // First create the document view
 //        mDocView = new ReaderView(this);
-        mDocView.setAdapter(new PageAdapter(this, core));
+        PageAdapter adapter = new PageAdapter(this, core);
+        mViewStub.inflate();
+        mDocView = (ReaderView) findViewById(R.id.readerview);
+        mDocView.setAdapter(adapter);
 
 
         // Make the buttons overlay, and store all its
@@ -243,22 +280,5 @@ public class MupdfActivity extends BaseActivity {
             return null;
         }
         return core;
-    }
-
-    @Override
-    public void initListener() {
-
-    }
-
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.inject(this);
     }
 }

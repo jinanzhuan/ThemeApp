@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CodeTheme" parent="@style/AppTheme">
-
-    </style>
-
     <!--5.0以后-->
     <style name="XmlTheme" parent="@style/AppTheme">
         <item name="android:windowTranslucentStatus">false</item>

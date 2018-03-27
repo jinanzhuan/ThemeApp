@@ -49,13 +49,13 @@
             android:text="StatusBarAcivity"/>
 
         <Button
-            android:id="@+id/btn_mupdf"
+            android:id="@+id/btn_user_define"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="UserDefinedActivity"/>
 
         <Button
-            android:id="@+id/btn_user_define"
+            android:id="@+id/btn_mupdf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MuPdfActivity"/>
