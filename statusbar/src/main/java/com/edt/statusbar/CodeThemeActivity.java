@@ -31,8 +31,11 @@ public class CodeThemeActivity extends BaseActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
         setSystemFit();
-        StatusBarCompat.compat(mContext, Color.parseColor("#60b0e3"));
+//        StatusBarCompat.compat(mContext, Color.parseColor("#60b0e3"));
     }
 
     public static void actionStart(Context context){
@@ -70,4 +73,5 @@ public class CodeThemeActivity extends BaseActivity {
         StatusBarCompat.compat(mContext, Color.RED);
         rl_title.setBackgroundColor(Color.RED);
     }
+
 }

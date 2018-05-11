@@ -8,9 +8,33 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- 设置右滑主题 -->
+    <style name="AppSwipeTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/HoloThemeActivityAnimation</item>
+        <!-- 设置背景透明，右滑时才能看到上一个界面，否则会看到黑屏效果-->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!--Activity退出动画-->
+    <style name="HoloThemeActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_open_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_open_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_close_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_close_exit</item>
+    </style>
+
     <!--Android 4.4 以下版本，不实现沉浸样式，跟随系统样式-->
     <style name="XmlTheme" parent="@style/AppTheme">
 
+    </style>
+
+
+    <style name="tl_text_consult" parent="AppTheme">
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>

@@ -3,13 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidSystemUiTraining/AndroidSystemUiTraining.iml" filepath="$PROJECT_DIR$/AndroidSystemUiTraining/AndroidSystemUiTraining.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TestApp.iml" filepath="$PROJECT_DIR$/TestApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThemeApp.iml" filepath="$PROJECT_DIR$/ThemeApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dtaf/calendar/calendar.iml" filepath="$PROJECT_DIR$/../dtaf/calendar/calendar.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dtaf/dtaf.iml" filepath="$PROJECT_DIR$/../dtaf/dtaf.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dtaf/easeUI/easeUI.iml" filepath="$PROJECT_DIR$/../dtaf/easeUI/easeUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dtaf/framework_common/framework_common.iml" filepath="$PROJECT_DIR$/../dtaf/framework_common/framework_common.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dtaf/framework_model/framework_model.iml" filepath="$PROJECT_DIR$/../dtaf/framework_model/framework_model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mupdf-lib/mupdf-lib.iml" filepath="$PROJECT_DIR$/mupdf-lib/mupdf-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/statusbar/statusbar.iml" filepath="$PROJECT_DIR$/statusbar/statusbar.iml" />
     </modules>
   </component>
 </project>

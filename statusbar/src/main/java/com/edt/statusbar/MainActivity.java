@@ -44,4 +44,8 @@ public class MainActivity extends BaseActivity {
         StatusBarCompat.compat(mContext, Color.RED);
         rl_title.setBackgroundColor(Color.RED);
     }
+
+    public void onImage(View view){
+        ImageThemeActivity.actionStart(mContext);
+    }
 }
