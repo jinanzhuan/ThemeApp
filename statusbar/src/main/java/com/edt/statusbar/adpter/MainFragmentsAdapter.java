@@ -1,8 +1,8 @@
 package com.edt.statusbar.adpter;
 
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import com.edt.statusbar.bean.FragmentBean;
 
@@ -19,10 +19,11 @@ import java.util.List;
  * </pre>
  */
 
-public class MainFragmentsAdapter extends PagerAdapter {
+public class MainFragmentsAdapter extends FragmentPagerAdapter {
     private List<FragmentBean> mFragments = new ArrayList<>();
 
-    public MainFragmentsAdapter(List<FragmentBean> fragments) {
+    public MainFragmentsAdapter(FragmentManager fm, List<FragmentBean> fragments) {
+        super(fm);
         mFragments = fragments;
     }
 
@@ -32,22 +33,12 @@ public class MainFragmentsAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        return super.instantiateItem(container, position);
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View) object);
-    }
-
-    @Override
     public CharSequence getPageTitle(int position) {
         return mFragments.get(position).getTitle();
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return mFragments.get(position).getFragment();
     }
 }

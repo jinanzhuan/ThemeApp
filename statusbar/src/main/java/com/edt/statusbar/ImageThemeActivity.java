@@ -10,10 +10,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.edt.statusbar.adpter.MainFragmentsAdapter;
 import com.edt.statusbar.base.BaseActivity;
 import com.edt.statusbar.bean.FragmentBean;
-import com.edt.statusbar.fragment.HomeFragment;
+import com.edt.statusbar.utils.CommonInitilizer;
 import com.edt.statusbar.view.NoScrollViewPager;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -54,9 +57,19 @@ public class ImageThemeActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        FragmentBean bean = new FragmentBean();
-        bean.setTitle("主页");
-        bean.setFragment(new HomeFragment());
+        List<FragmentBean> fragments = FragmentBean.init();
+        MainFragmentsAdapter adapter = new MainFragmentsAdapter(getSupportFragmentManager(), fragments);
+        mVpFragment.setAdapter(adapter);
+
+        CommonInitilizer.setIndicator(mContext, mTlLabel, 5, 5);
+        mTlLabel.setTabMode(TabLayout.MODE_FIXED);
+        for (int i = 0; i < fragments.size(); i++) {
+            TabLayout.Tab newTab = mTlLabel.newTab();
+            newTab.setText(fragments.get(i).getTitle());
+            newTab.setIcon(fragments.get(i).getImage());
+            mTlLabel.addTab(newTab);
+        }
+        mTlLabel.setupWithViewPager(mVpFragment);
     }
 
     /**
